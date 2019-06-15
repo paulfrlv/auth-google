@@ -1,0 +1,12 @@
+<div *ngIf="user.uid | async as uid; else login">
+  Пользователь вошел в систему. {{uid}}
+  <div *ngIf="user.isAdmin | async">
+    Пользователь также имеет возможности администратора.
+  </div>
+  <div><button (click)="user.logout()">Выход из системы</button></div>
+</div>
+  <ng-template #login>
+    Вам необходимо войти в систему: <button (click)="user.login()">Login</button>
+    
+  </ng-template>
+  
